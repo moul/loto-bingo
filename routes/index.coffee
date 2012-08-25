@@ -1,4 +1,4 @@
 exports.index = (req, res) ->
-        res.render 'index', { title: 'Loto-Bingo' }
+        res.render 'index', { title: 'Index' }
 
 exports.login = require './login'
