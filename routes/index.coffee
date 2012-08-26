@@ -1,4 +1,6 @@
 exports.index = (req, res) ->
-        res.render 'index', { title: 'Index' }
+        res.message 'salut !', 'warning'
+        res.render 'index', { title: 'Home' }
+        #res.redirect '/login'
 
 exports.login = require './login'
