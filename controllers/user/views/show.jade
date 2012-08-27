@@ -1,0 +1,9 @@
+extends layout
+
+block title
+  h1= user.name
+    a(href="/user/${user.id}/edit") edit
+
+block content
+  div nothing
+
