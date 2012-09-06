@@ -7,10 +7,11 @@ app = require('../kickstart2')(require './config').app()
 #app.get  '/bingo/list', app.restrict,   routes.bingo.list
 
 app.autodiscover "./controllers"
-console.log '==========================================='
-for subpath, subapp of app.subapps
-        console.log subpath
-        console.dir subapp.config.dirs
-console.log '==========================================='
+
+#console.log '==========================================='
+#for subpath, subapp of app.subapps
+#        console.log subpath
+#        console.dir subapp.config.dirs
+#console.log '==========================================='
 
 do app.run

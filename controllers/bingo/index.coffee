@@ -1,4 +1,7 @@
 db = require '../../db'
+utils = require '../../utils'
+greatest_factor = utils.greatest_factor
+
 
 exports.before = (req, res, next) ->
         id = req.params.bingo_id
@@ -8,6 +11,15 @@ exports.before = (req, res, next) ->
                 req.bingo = db.bingos[id]
                 if not req.bingo
                         return next new Error 'User not found'
+
+                if req.bingo.entries == 'auto'
+                        req.bingo.entries = req.bingo.cases.length
+                a = greatest_factor req.bingo.entries
+                b = req.bingo.entries / a
+                req.bingo.height = Math.max a, b
+                req.bingo.width = Math.min a, b
+                req.bingo.span = Math.floor(12 / req.bingo.width)
+
                 do next
 
 exports.list = (req, res, next) ->
@@ -19,16 +31,12 @@ exports.edit = (req, res, next) ->
         res.render 'edit', { bingo: req.bingo }
 
 exports.show = (req, res, next) ->
-        res.message 'SHOW', 'error'
+        res.message 'SHOW'
         res.render 'show', { bingo: req.bingo }
-        #console.log '-------------------------'
-        #console.dir req.bingo
-        #console.log '-------------------------'
-        #res.render 'index', { title: req.bingo.title, content: 'test' }
 
 exports.update = (req, res, next) ->
-        #body = req.body
-        #req.user.name = body.user.name
-        #res.message 'Information updated !'
-        #res.redirect "/user/#{req.user.id}"
-        res.message 'TODO'
+        body = req.body
+        req.bingo.title = body.bingo.title
+        req.bingo.cases = body.bingo.cases.split("\n")
+        res.message 'Information updated !'
+        res.redirect "/bingo/#{req.bingo.id}"
