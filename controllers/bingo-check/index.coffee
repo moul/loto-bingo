@@ -18,3 +18,4 @@ exports.show = (req, res, next) ->
                 check: req.check
                 text: req.bingo.cases[req.check]
                 user: req.user
+

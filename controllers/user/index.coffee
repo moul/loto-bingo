@@ -24,3 +24,12 @@ exports.update = (req, res, next) ->
         req.user.name = body.user.name
         res.message 'Information updated !'
         res.redirect "/user/#{req.user.id}"
+
+exports.locals =
+        menus:
+                left:
+                        '/users':
+                                title: 'Users'
+                navbar:
+                        '/users':
+                                title: 'Users'

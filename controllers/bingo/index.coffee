@@ -40,3 +40,18 @@ exports.update = (req, res, next) ->
         req.bingo.cases = body.bingo.cases.split("\n")
         res.message 'Information updated !'
         res.redirect "/bingo/#{req.bingo.id}"
+
+exports.locals =
+        menus:
+                left:
+                        '/bingos':
+                                title: 'Bingos'
+                navbar:
+                        '/bingos':
+                                title: 'Bingos'
+
+if db.bingos
+        exports.locals.menus.left['/bingos'].childrens = {}
+        for id, bingo of db.bingos
+                exports.locals.menus.left['/bingos'].childrens["/bingo/#{bingo.id}"] =
+                        title: bingo.title
