@@ -1,0 +1,34 @@
+doctype 5
+html
+  head
+    title Auth App: #{title}
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    a#Home(href="/") Home
+    br
+    a#Home(href="/private") Private
+    - if(everyauth.loggedIn)
+      ul#Authed
+      - if(everyauth.twitter)
+        li Hi #{everyauth.twitter.user.name} from Twitter!
+        li
+          img(src=#{everyauth.twitter.user.profile_image_url}")
+      - if(everyauth.facebook)
+        li Hi #{everyauth.facebook.user.name} from Facebook !
+      - if(everyauth.github)
+        li Hi #{everyauth.github.user.name} from Github!
+      li
+        a(href="/logout") Sign out
+    - else
+      ul#Authenticate
+        li
+          a(href="/auth/twitter")
+            Log in with twitter
+        li
+          a(href="/auth/facebook")
+            Log in with Facebook
+        li
+          a(href="/auth/github")
+            Log in with github
+
+    block content
