@@ -1,0 +1,13 @@
+extends layout
+
+block title
+  h1= user.name
+  a(href="/user/#{user.id}/edit") edit
+
+block content
+  if user.bingos.length
+    ul
+      for bingo in user.bingos
+        li
+          a(href="/bingo/#{bingo}")= bingo
+

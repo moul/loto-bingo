@@ -1,0 +1,29 @@
+extends layout
+
+append css_custom
+  :stylus
+    .bingo_entry a
+      background: white
+      border-radius: 5px
+      padding: 5px
+      min-height: 50px !important
+      margin: 10px
+      text-align: center
+      text-decoration: none
+      -webkit-transition: 0.1s
+      &:hover
+        background: gray
+
+block title
+  h1= bingo.title
+  a(href="/bingo/#{bingo.id}/edit") edit
+
+block content
+  pre= JSON.stringify(bingo)
+  - for (y = 0; y < bingo.height; y++)
+    .row
+      - for (x = 0; x < bingo.width; x++)
+        - span = Math.floor(12 / bingo.width)
+        - cid = y * bingo.width + x
+        div.bingo_entry
+          a(href="/bingo/#{bingo.id}/check/#{cid}", class="span#{span}")= bingo.cases[cid]

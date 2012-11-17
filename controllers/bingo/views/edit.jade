@@ -1,0 +1,13 @@
+extends layout
+
+block title
+  h1= bingo.title
+
+block content
+  form(action="/bingo/#{bingo.id}", method="post")
+    input(type="hidden", name="_method", value="put")
+    label Title:
+      input(type="text", name="bingo[title]", value=bingo.title)
+    label Cases:
+      textarea(rows=20, name="bingo[cases]")= bingo.cases.join("\n")
+    input(type="submit", value="Update")

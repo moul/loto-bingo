@@ -1,0 +1,48 @@
+{
+    "author": {
+        "name": "Manfred Touron",
+        "email": "m@42.am",
+        "url": "http://github.com/moul"
+    },
+    "contributors": [
+        {
+            "name": "Manfred Touron",
+            "email": "m@42.am"
+        }
+    ],
+    "name": "Loto-Bingo",
+    "version": "0.0.1",
+    "homepage": "https://github.com/moul/loto-bingo",
+    "description": "Loto Bingo",
+    "private": false,
+    "scripts": {
+        "start": "coffee app.coffee",
+        "prepublish": "npm prune"
+    },
+    "bin": {
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/moul/loto-bingo"
+    },
+    "engines": {
+        "node": ">= 0.8.2"
+    },
+    "dependencies": {
+        "kickstart2": "*"
+    },
+    "devDependencies": {
+        "coffee-script": ">= 0.0.1",
+        "uglify-js": ">= 1.0.7",
+        "uubench": "0.0.1",
+        "markdown": ">= 0.0.1",
+        "mocha": "*"
+    },
+    "keywords": [
+        "loto",
+        "bingo",
+        "kickstart2"
+    ],
+    "main": "app.coffee",
+    "readme": ""
+}
