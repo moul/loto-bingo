@@ -2,4 +2,11 @@ extends layout
 
 block content
   h1 lorem ipsum
+  ul
+    for question in loto.questions
+      li= question
+  hr
+  ul
+    for question in questions
+      li= question
 
